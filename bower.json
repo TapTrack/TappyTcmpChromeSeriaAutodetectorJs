@@ -1,0 +1,34 @@
+{
+    "name": "tappy-tcmpchromeserialautodetector",
+    "description": "Autodetection for using TCMP Tappy USB devices with chrome serial ports",
+    "main": "dist/chrometappydetector.js",
+    "authors": [
+        "TapTrack"
+    ],
+    "dependencies": {
+        "tappy-systemfamily": "~1.0.0",
+        "tappy-chromeserialcommunicator": "~1.0.0",
+        "tappy-tcmp": "~1.0.0"
+    },
+    "license": "Apache-2.0",
+    "keywords": [
+        "TCMP",
+        "Tappy",
+        "TappyUSB",
+        "Chrome"
+    ],
+    "moduleType": [],
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "gulpfile.js",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/TapTrack/TappyTcmpChromeSerialAutodetectorJs.git"
+    }
+}
