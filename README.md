@@ -8,7 +8,7 @@ npm install @taptrack/tappy-chromeserialautodetector
 ```
 Bower
 ```
-bower install tappy-chromeserialautodetector
+bower install tappy-tcmpchromeserialautodetector
 ```
 
 ## Usage
