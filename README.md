@@ -4,11 +4,11 @@ app serial port.
 ## Installation
 NPM
 ```
-npm install @taptrack/tappy-chromeserialautodetect
+npm install @taptrack/tappy-chromeserialautodetector
 ```
 Bower
 ```
-bower install tappy-chromeserialautodetect
+bower install tappy-chromeserialautodetector
 ```
 
 ## Usage
