@@ -127,17 +127,17 @@
             var msg = new SystemFamily.Commands.Ping();
             var resolver = new SystemFamily.Resolver();
             tappy.setMessageListener(function(msg) {
-                tappy.disconnect(function() {
-                    var resolvedMsg = null;
-                    try {
-                        resolvedMsg = resolver.resolveResponse(msg);
-                    } catch (e) {
-                        console.log(e);
-                    }
-                    if(self.reportScans && resolvedMsg !== null && SystemFamily.Responses.Ping.isTypeOf(resolvedMsg)) {
+                var resolvedMsg = null;
+                try {
+                    resolvedMsg = resolver.resolveResponse(msg);
+                } catch (e) {
+                    console.log(e);
+                }
+                if(self.reportScans && resolvedMsg !== null && SystemFamily.Responses.Ping.isTypeOf(resolvedMsg)) {
+                    tappy.disconnect(function() {
                         self.cb(device);
-                    }
-                });
+                    });
+                }
             });
             self.remainingDeviceCheckCount++;
             self.notifyStatus();

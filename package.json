@@ -1,6 +1,6 @@
 {
     "name": "tappy-chromeserialautodetector",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Autodetection for using TCMP Tappy USB devices with chrome serial ports",
     "main": "dist/chrometappydetector.js",
     "directories": {
