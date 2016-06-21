@@ -93,6 +93,8 @@
 
         this.internalScanCb = function(devices) {
             if(devices.length === 0) {
+                // so edge listeners detect transition
+                self.rawNotifyStatus(true);
                 self.notifyStatus(true);
             } else {
                 for(var i = 0; i < devices.length; i++) {
@@ -159,8 +161,13 @@
             if(always || !self.hasReported || currentStatus !== self.lastStatus) {
                 self.hasReported = true;
                 self.lastStatus = currentStatus;
-                self.statusCb(currentStatus);
+                self.rawNotifyStatus(currentStatus);
             }
+        },
+
+        rawNotifyStatus: function(currentStatus) {
+            var self = this;
+            self.statusCb(currentStatus);
         },
 
         scan: function() {
