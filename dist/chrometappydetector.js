@@ -92,14 +92,23 @@
         this.statusCb = function() {};
 
         this.internalScanCb = function(devices) {
-            if(devices.length === 0) {
+            var filtered = [];
+            for(var i = 0; i < devices.length; i++) {
+                var device = devices[i];
+                // checking for FTDI vendorID
+                if (!!device.vendorId && device.vendorId === 1027) {
+                    filtered.push(device);
+                }
+            }
+
+            if(filtered.length === 0) {
                 // so edge listeners detect transition
                 self.rawNotifyStatus(true);
                 self.notifyStatus(true);
             } else {
-                for(var i = 0; i < devices.length; i++) {
+                for(var j = 0; j < filtered.length; j++) {
                     if(self.reportScans) {
-                        self.handshake(devices[i]);
+                        self.handshake(filtered[j]);
                     }
                 }
             }
@@ -123,7 +132,7 @@
 
         handshake: function(device) {
             var self = this;
-            var path = device.path;
+            // var path = device.path;
             var comm = new Communicator(device.path,{serial: self.serialWrapper});
             var tappy = new Tappy({communicator: comm});
             var msg = new SystemFamily.Commands.Ping();

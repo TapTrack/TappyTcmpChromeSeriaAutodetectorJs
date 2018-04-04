@@ -1,6 +1,13 @@
+chrome = {
+    runtime: {
+        lastError: null
+    }
+};
+
 var Detector = require('../src/chrometappydetector.js');
 var Tappy = require('@taptrack/tappy');
 var System = require('@taptrack/tappy-systemfamily');
+
 
 var MockLoudDevice = function(mockSerial, connectionId) {
     this.disconnected = false;
@@ -118,15 +125,24 @@ MockSerial.prototype = {
         this.lastGetDeviceCb = cb;
         var devices = [];
         for(var tDevice in this.tappies) {
-            devices.push({path: this.tappies[tDevice]});
+            devices.push({
+                path: this.tappies[tDevice],
+                vendorId: 1027
+            });
         }
 
         for(var sDevice in this.silentNonTappyDevices) {
-            devices.push({path: this.silentNonTappyDevices[sDevice]});
+            devices.push({
+                path: this.silentNonTappyDevices[sDevice],
+                vendorId: 1027
+            });
         }
 
         for(var lDevice in this.loudNonTappyDevices) {
-            devices.push({path: this.loudNonTappyDevices[lDevice]});
+            devices.push({
+                path: this.loudNonTappyDevices[lDevice],
+                vendorId: 1027
+            });
         }
         cb(devices);
     },
